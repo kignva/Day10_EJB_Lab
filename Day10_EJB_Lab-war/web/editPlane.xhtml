@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{editPlaneMB.title}</title>
+    </h:head>
+    <h:body>
+        <h:form id="form1">
+            <h:inputHidden id="plane_id" value="#{editPlaneMB.plane.id}"></h:inputHidden>
+            <h:inputHidden id="pilot_id" value="#{editPlaneMB.plane.pilot.id}"></h:inputHidden>
+            <h:inputHidden id="mileage_hidden" value="#{editPlaneMB.plane.mileage}"></h:inputHidden>
+            <h:inputHidden id="lock_version" value="#{editPlaneMB.plane.lock_version}"></h:inputHidden>
+            
+            <h2>#{editPlaneMB.title}:</h2>
+            <h:panelGrid columns="3">
+                <h:outputLabel>Made</h:outputLabel>
+                <h:inputText id="make" value="#{editPlaneMB.plane.make}" required="true"></h:inputText>
+                <h:message for="make" style="color:red"/>
+
+                <h:outputLabel>Model</h:outputLabel>
+                <h:inputText id="model" value="#{editPlaneMB.plane.model}" required="true"></h:inputText>
+                <h:message for="model" style="color:red"/>
+
+                <h:outputLabel>Capacity</h:outputLabel>
+                <h:inputText id="capacity" value="#{editPlaneMB.plane.capacity}">
+                    <f:validateLongRange minimum="50" maximum="550"></f:validateLongRange>
+                </h:inputText>
+                <h:message for="capacity" style="color:red"/>
+
+                <h:outputLabel>numberOfEngines</h:outputLabel>
+                <h:inputText id="numberOfEngines" value="#{editPlaneMB.plane.numberOfEngines}"></h:inputText>
+                <h:message for="numberOfEngines" style="color:red"/>
+                
+                <h:outputLabel>Mileage</h:outputLabel>
+                <h:inputText id="mileage" value="#{editPlaneMB.plane.mileage}" readonly="true"></h:inputText>
+                <h:message for="mileage" style="color:red"/>
+
+            </h:panelGrid>
+            
+            <h:panelGrid columns="3">
+                <h:outputLabel>Name</h:outputLabel>
+                <h:inputText id="name" value="#{editPlaneMB.plane.pilot.name}" required="false"></h:inputText>
+                <h:message for="name" style="color:red" />
+                
+                <h:outputLabel>Sex</h:outputLabel>
+                <h:inputText id="gender" value="#{editPlaneMB.plane.pilot.gender}"></h:inputText>
+                <h:message for="gender" style="color:red" />
+                
+                <h:outputLabel>DOB</h:outputLabel>
+                <h:inputText id="dob" value="#{editPlaneMB.plane.pilot.dob}" required="false">
+                    <f:convertDateTime dateStyle="short" type="date"></f:convertDateTime>
+                </h:inputText>
+                <h:message for="dob" style="color:red" />
+                
+                <h:outputLabel>Address</h:outputLabel>
+                <h:inputText id="address" value="#{editPlaneMB.plane.pilot.address}"></h:inputText>
+                <h:message for="address" style="color:red" />
+            </h:panelGrid>
+            <br>
+                <h:commandButton value="#{editPlaneMB.actionString}" action="#{editPlaneMB.save()}"></h:commandButton>
+                <h:commandButton value="Add Mileage" action="#{editPlaneMB.addMileageAction()}"></h:commandButton>
+                <h:commandButton value="Cancel" immediate="true" action="index"></h:commandButton>
+            </br>
+            <p:dialog id="dialog1" widgetVar="dialog1"></p:dialog>
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{editPilot.title}</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h2>#{editPilot.title}:</h2>
+            <h:panelGrid columns="2">
+                <h:outputLabel>Name</h:outputLabel>
+                <h:inputText id="name" value="#{editPilot.pilot.name}" required="true"></h:inputText>
+                <h:outputLabel>Age</h:outputLabel>
+                <h:inputText id="gender" value="#{editPilot.pilot.gender}"></h:inputText>
+                <h:outputLabel>Address</h:outputLabel>
+                <h:inputText id="address" value="#{editPilot.pilot.address}">
+                </h:inputText>
+            </h:panelGrid>
+            <br>
+                <h:commandButton value="#{editPilot.actionString}" action="#{editPilot.save()}">
+                    <h:inputHidden value="#{editPilot.pilot.id}"></h:inputHidden>
+                </h:commandButton>
+                <h:commandButton value="Cancel" immediate="true" action="editPlane"></h:commandButton>
+                </br>
+            
+        </h:form>
+    </h:body>
+</html>
+

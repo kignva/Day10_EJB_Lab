@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Plane </title>
+    </h:head>
+    <h:body>
+        <ui:composition template="mainTemplate.xhtml">
+            <ui:define name="content">
+            <h2>Plane List</h2>
+            <h:form>
+                <br>
+                    <h:commandButton value="Fill Data"  action="#{planeMB.fillData()}"></h:commandButton>
+                    <h:commandButton value="Clear Data"  action="#{planeMB.clearData()}"></h:commandButton>
+                </br>
+                <h:dataTable id="planes" value="#{planeMB.planes}" var="plane_row" border="1">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{plane_row.id}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Make"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{plane_row.make}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Model"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{plane_row.model}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Capacity"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{plane_row.capacity}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Mileage"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{plane_row.mileage}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Pilot"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{plane_row.pilot.name}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value=""></h:outputText>
+                        </f:facet>
+
+                        <h:commandButton value="Delete"  action="#{planeMB.delete(plane_row.id)}"></h:commandButton>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value=""></h:outputText>
+                        </f:facet>
+
+                        <h:commandButton value="Edit"  action="#{editPlaneMB.loadData(plane_row.id)}"></h:commandButton>
+                    </h:column>
+                </h:dataTable>
+                <br>
+                    <h:commandButton value="Customer" action="customer"></h:commandButton>
+                    <h:commandButton value="New Plane" action="editPlane"></h:commandButton>
+                </br>
+                <br/>
+            </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

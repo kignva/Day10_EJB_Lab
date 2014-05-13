@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <h2>Log</h2>
+        <h:form>
+            <h:dataTable id="logs" value="#{logMB.logs}" var="log_row" 
+                         border="1" columnClasses="idColumn,timeColumn">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Id" />
+                    </f:facet>
+                    <h:outputText value="#{log_row.id}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="time" />
+                    </f:facet>
+                    <h:outputText value="#{log_row.time}">
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="message"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{log_row.message}"></h:outputText>
+                </h:column>
+            </h:dataTable>
+            <h:commandButton value="First" action="#{logMB.loadData()}" ></h:commandButton>
+            <h:commandButton value="Previous" action="#{logMB.previousData()}" ></h:commandButton>
+            <h:commandButton value="Next" action="#{logMB.nextData()}" ></h:commandButton>
+        </h:form>
+    </h:body>
+</html>
+
