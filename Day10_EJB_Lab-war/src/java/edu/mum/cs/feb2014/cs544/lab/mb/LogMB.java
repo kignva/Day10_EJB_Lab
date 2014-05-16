@@ -29,7 +29,7 @@ public class LogMB implements Serializable {
 
     private List<Log> logs = new ArrayList<>();
 
-    final private int maxPerPage = 25;
+    final private int maxPerPage = 15;
     private int startPosition;
 
     public LogMB() {

@@ -8,6 +8,8 @@ package edu.mum.cs.feb2014.cs544.lab.ejb;
 import edu.mum.cs.feb2014.cs544.lab.entity.Customer;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.interceptor.ExcludeClassInterceptors;
 import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
@@ -29,6 +31,7 @@ public class CustomerService {
 
     }
 
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     @ExcludeClassInterceptors
     public List<Customer> getAll() {
         TypedQuery<Customer> q = em.createNamedQuery("Customer.list", Customer.class);
@@ -63,8 +66,8 @@ public class CustomerService {
         return removed;
     }
     
-    
-        public Customer get(int id)
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    public Customer get(int id)
     {
         return em.find(Customer.class, id);
     }

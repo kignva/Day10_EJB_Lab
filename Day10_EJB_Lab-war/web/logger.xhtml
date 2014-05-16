@@ -29,9 +29,15 @@
                     <h:outputText value="#{log_row.message}"></h:outputText>
                 </h:column>
             </h:dataTable>
-            <h:commandButton value="First" action="#{logMB.loadData()}" ></h:commandButton>
-            <h:commandButton value="Previous" action="#{logMB.previousData()}" ></h:commandButton>
-            <h:commandButton value="Next" action="#{logMB.nextData()}" ></h:commandButton>
+            <h:commandButton value="First" >
+                <f:ajax render="logs" listener="#{logMB.loadData()}" />
+            </h:commandButton>
+            <h:commandButton value="Previous"  >
+                <f:ajax render="logs" listener="#{logMB.previousData()}" />
+            </h:commandButton>
+            <h:commandButton value="Next" >
+                <f:ajax render="logs" listener="#{logMB.nextData()}" />
+            </h:commandButton>
         </h:form>
     </h:body>
 </html>
